@@ -158,27 +158,6 @@ write.table(estimate_richness(its), file="its_diversity.tsv",append = FALSE, quo
 
 
 ```R
-#Estimate eveness diversity indeces
-evenness(its, index = "all")
-```
-
-
-<table class="dataframe">
-<caption>A data.frame: 2 × 5</caption>
-<thead>
-	<tr><th></th><th scope=col>camargo</th><th scope=col>pielou</th><th scope=col>simpson</th><th scope=col>evar</th><th scope=col>bulla</th></tr>
-	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>substrate</th><td>0.13273929</td><td>0.6658241</td><td>0.05183596</td><td>0.2661997</td><td>0.2669699</td></tr>
-	<tr><th scope=row>root</th><td>0.06337258</td><td>0.4208431</td><td>0.01357241</td><td>0.2963630</td><td>0.1488008</td></tr>
-</tbody>
-</table>
-
-
-
-
-```R
 div <- read.table("its_diversity.tsv", header=TRUE, row.names = NULL)
 colnames(div) <- c("Sample", "Observed", "Chao1", "SE.Chao1", 
                     "ACE", "SE.ACE", "Shannon", "Simpson", "InvSimpson", "Fisher")
@@ -202,19 +181,19 @@ simpson_plot
 
 
     
-![png](output_8_0.png)
+![png](output_7_0.png)
     
 
 
 
     
-![png](output_8_1.png)
+![png](output_7_1.png)
     
 
 
 
     
-![png](output_8_2.png)
+![png](output_7_2.png)
     
 
 
@@ -312,7 +291,7 @@ phylum_plot
 
 
     
-![png](output_11_3.png)
+![png](output_10_3.png)
     
 
 
@@ -447,6 +426,6 @@ sp_heat_plot
 
 
     
-![png](output_15_1.png)
+![png](output_14_1.png)
     
 

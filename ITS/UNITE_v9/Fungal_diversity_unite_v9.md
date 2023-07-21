@@ -135,7 +135,7 @@ rarecurve(t(otu), step=1000, cex=0.5, col="blue")
 
 
 ```R
-# Shannon diversity estimations
+# Diversity estimations
 estimate_richness(its)
 write.table(estimate_richness(its), file="its_diversity.tsv",append = FALSE, quote = TRUE, sep = "\t")
 
@@ -151,6 +151,27 @@ write.table(estimate_richness(its), file="its_diversity.tsv",append = FALSE, quo
 <tbody>
 	<tr><th scope=row>substrate</th><td>646</td><td>655.9148</td><td> 4.038774</td><td>677.5884</td><td>11.24611</td><td>4.711616</td><td>0.9749239</td><td>39.878571</td><td>148.16819</td></tr>
 	<tr><th scope=row>root</th><td>397</td><td>452.0093</td><td>13.967851</td><td>487.1234</td><td>10.80108</td><td>3.112338</td><td>0.8763509</td><td> 8.087401</td><td> 80.44836</td></tr>
+</tbody>
+</table>
+
+
+
+
+```R
+#Estimate eveness diversity indeces
+evenness(its, index = "all")
+```
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>camargo</th><th scope=col>pielou</th><th scope=col>simpson</th><th scope=col>evar</th><th scope=col>bulla</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>substrate</th><td>0.3620828</td><td>0.7281351</td><td>0.06173153</td><td>0.3548832</td><td>0.3307790</td></tr>
+	<tr><th scope=row>root</th><td>0.2709036</td><td>0.5201155</td><td>0.02037129</td><td>0.3223631</td><td>0.1988888</td></tr>
 </tbody>
 </table>
 
@@ -181,19 +202,19 @@ simpson_plot
 
 
     
-![png](output_7_0.png)
+![png](output_8_0.png)
     
 
 
 
     
-![png](output_7_1.png)
+![png](output_8_1.png)
     
 
 
 
     
-![png](output_7_2.png)
+![png](output_8_2.png)
     
 
 
@@ -287,7 +308,7 @@ phylum_plot
 
 
     
-![png](output_10_3.png)
+![png](output_11_3.png)
     
 
 
@@ -422,7 +443,7 @@ sp_heat_plot
 
 
     
-![png](output_14_1.png)
+![png](output_15_1.png)
     
 
 

@@ -37,7 +37,52 @@ done
 
 
 ```R
-##PONER PROTOCOLO DE LUIS PARA CONCATENAR
+##Concatenate merged and unmerged sequences
+#!/bin/bash
+#LDA 2023
+#Usage: ./merge_reads.sh FILE1 FILE2 OUTPUT
+#files are fastq or fastq.gz files
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <forward_file> <reverse_file> <output_prefix>"
+    exit 1
+fi
+
+# Input file paths
+forward_file="$1"
+reverse_file="$2"
+
+# Output prefix
+output_prefix="$3"
+
+# Output file paths
+concat_fastq="${output_prefix}_concat.fastq"
+merged_fastq="${output_prefix}_merged.fastq"
+concat_fasta="${output_prefix}_concat.fas"
+merged_fasta="${output_prefix}_merged.fas"
+concat_and_merged_fasta="${output_prefix}_concat_and_merged.fas"
+
+# Run pandaseq to merge the reads
+pandaseq -f "$forward_file" -r "$reverse_file" -O 10 -w "$concat_fastq" -U "$merged_fastq"
+
+# Convert concatenated fastq to fasta format
+seqtk seq -A "$concat_fastq" > "$concat_fasta"
+
+# Convert merged fastq to fasta format
+seqtk seq -A "$merged_fastq" > "$merged_fasta"
+
+echo "Total assembled sequences:"
+grep -c ">" $concat_fasta
+
+echo "Total merged -- sequences:"
+grep -c ">" $merged_fasta
+
+# Concatenate the fasta files and compress using pbzip
+cat "$concat_fasta" "$merged_fasta" | pbzip2 -p2 > "$concat_and_merged_fasta.bz2"
+
+# Remove temporary files
+rm "$concat_fastq" "$merged_fastq" "$concat_fasta" "$merged_fasta"
+
 ```
 
 

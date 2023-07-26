@@ -1,41 +1,5 @@
 # Sequence processing
 
-
-```R
-#A list of files to assembly is generated.
-ls *.fastq.gz | perl -pe 's/_R.*.fastq.gz//g' | sort | uniq > lista
-```
-
-
-```R
-#Use assembly sh script
-The "assemblyCASPER.sh" scrip generates the works to assembly files from list.
-```
-
-
-```R
-#!/bin/bash
-# Use: bash assemblyCASPER.sh NOMBRE_TRABAJO
-
-SEQS=$(pwd)
-SALIDAS=$(pwd)
-BIN=/usr/local/bin
-COUNT=0
-
-for FAA in `cat lista`
-do
-let COUNT=COUNT+1
-echo "#!/bin/bash" >$*.$COUNT.scr
-echo "#$ -cwd" >>$*.$COUNT.scr
-echo "#$ -j y" >>$*.$COUNT.scr
-echo "#$ -S /bin/bash" >>$*.$COUNT.scr
-
-echo "$BIN/casper <(cat $SEQS/$FAA"_R1.fastq") <(cat($SEQS/$FAA"_R2.fastq") -o $FAA.assembly.fastq -o $FAA"_assembly"" -l >>$*.$COUNT.scr
-
-done
-```
-
-
 ```R
 ##Concatenate merged and unmerged sequences
 #!/bin/bash

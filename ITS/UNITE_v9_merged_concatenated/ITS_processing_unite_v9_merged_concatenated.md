@@ -49,12 +49,6 @@ rm "$concat_fastq" "$merged_fastq" "$concat_fasta" "$merged_fasta"
 
 ```
 
-
-```R
-#Descomprimir secuencias concatenadas
-```
-
-
 ```R
 Sequences names are changed with “header.fasta.numbers.pl”.
 
